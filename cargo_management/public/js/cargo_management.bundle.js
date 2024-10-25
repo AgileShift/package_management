@@ -26,20 +26,20 @@ cargo_management = {
 			return response; // If data is not returned, fields will be erased. Affected Views: List, Form and QuickEntry
 
 		const carrierRegex = [ // The order matters for USPS and FedEx!
-			{carrier: 'UPS',        regex: /^1Z/},
-			{carrier: 'SunYou',     regex: /^SY/},       // SYUS & SYAE & SYBA
+			{carrier: 'UPS', regex: /^1Z/},
+			{carrier: 'SunYou', regex: /^SY/},       // SYUS & SYAE & SYBA
 			{carrier: 'SF Express', regex: /^SF/},
-			{carrier: 'Veho',       regex: /^1V/},  // FIXME: We can enforce length?
-			{carrier: 'Amazon',     regex: /^TBA/},
+			{carrier: 'Veho', regex: /^1V/},         // FIXME: We can enforce length?
+			{carrier: 'Amazon', regex: /^TBA/},
 			//{carrier: 'UniUni',     regex: /^UUS0/},     // 'YunExpress' -> YT, sometimes delivers to UniUni
-			{carrier: 'Cainiao',    regex: /^LP00/},     // Cainiao can sometimes track 'Yanwen' and 'SunYou'
-			{carrier: 'DHL',        regex: /^.{10}$/},
-			{carrier: 'YunExpress', regex: /^YT|^YU00/}, // These are sometimes delivered by 'USPS' and 'OnTrac'
-			{carrier: 'OnTrac',     regex: /^1LS|^D100/},
-			{carrier: 'Yanwen',     regex: /^ALS00|^S000|^UY/}, // ALS00 is sometimes delivered by 'USPS'. UY ends with 'CZ'
-			{carrier: 'Unknown',    regex: /^92(612.{17})$|^420.{5}92(612.{17})$/},       // *92612*90980949456651012 | 42033166*926129*0980949456651012. Start with: 92612 or with zipcode(420xxxxx) can be handled by FedEx or USPS. search_term starts at 612
-			{carrier: 'USPS',       regex: /^9(?:.{21}|.{25})$|^420.{5}(9(?:.{21}|.{25}))$/}, // *9*400111108296364807659 | 42033165*9*274890983426386918697. First 8 digits: 420xxxxx(zipcode)
-			{carrier: 'FedEx',      regex: /^.{12}$|^612.{17}$|^.{22}([1-9].{11})$/},     // *612*90982157320543198 | 9622001900005105596800*5*49425980480. Last 12 digits is tracking
+			{carrier: 'Cainiao', regex: /^LP00/},          // Cainiao can sometimes track 'Yanwen' and 'SunYou'
+			{carrier: 'DHL', regex: /^.{10}$/},
+			{carrier: 'YunExpress', regex: /^YT|^YU00/},   // These are sometimes delivered by 'USPS' and 'OnTrac'
+			{carrier: 'OnTrac', regex: /^1LS|^D100/},
+			{carrier: 'Yanwen', regex: /^ALS00|^S000|^UY/}, // ALS00 is sometimes delivered by 'USPS'. UY ends with 'CZ'
+			{carrier: 'Unknown', regex: /^92(612.{17})$|^420.{5}92(612.{17})$/},       // *92612*90980949456651012 | 42033166*926129*0980949456651012. Start with: 92612 or with zipcode(420xxxxx) can be handled by FedEx or USPS. search_term starts at 612
+			{carrier: 'USPS', regex: /^9(?:.{21}|.{25})$|^420.{5}(9(?:.{21}|.{25}))$/}, // *9*400111108296364807659 | 42033165*9*274890983426386918697. First 8 digits: 420xxxxx(zipcode)
+			{carrier: 'FedEx', regex: /^.{12}$|^612.{17}$|^.{22}([1-9].{11})$/},     // *612*90982157320543198 | 9622001900005105596800*5*49425980480. Last 12 digits is tracking
 		]; // FIXME: Sort by the most used Carrier? | FIXME: Add More Carriers: 'LY', 'LB', 'LW' | # FIXME: Move to carriers.json
 		// AQ are china Post, LW are USPS
 		// 00310202207521313709 for Pitney Bowes
@@ -85,24 +85,26 @@ cargo_management = {
 		return {api, urls};
 	},
 
-	build_carrier_url_dialog(doc) {
-		let fields = [...this.build_carrier_section_for_dialog(__('Tracking Number'), doc.tracking_number, doc.carrier)];
+	open_carriers_dialog(doc) {
+		// This function creates a dialog with all possible carriers where a parcel can be tracked
+		let fields = [...this._carrier_section_for_dialog(__('Tracking Number'), doc.tracking_number, doc.carrier)];
 
 		if (doc.name !== doc.tracking_number) {
-			fields.unshift(...this.build_carrier_section_for_dialog(__('Name'), doc.name));
+			fields.unshift(...this._carrier_section_for_dialog(__('Name'), doc.name));
 		}
 
-		// TODO DELETE: 'consolidated_tracking_numbers' 12 Matches -> Migrate to doc.content[].tracking_number
-		if (doc.consolidated_tracking_numbers) {
-			doc.consolidated_tracking_numbers.split('\n').forEach((tracking_number, i) => {
-				fields.push(...this.build_carrier_section_for_dialog(__('Consolidated #{0}', [i + 1]), tracking_number));
+		if (doc.content) {
+			doc.content.forEach((content, i) => {
+				if (content.tracking_number) {
+					fields.push(...this._carrier_section_for_dialog(__('Consolidated #{0}', [i + 1]), content.tracking_number));
+				}
 			});
 		}
 
-		new frappe.ui.Dialog({animate: false, size: 'small', indicator: 'green', title: this.get_label, fields: fields}).show();
+		new frappe.ui.Dialog({animate: false, size: 'small', minimizable: true, title: __('Search'), fields: fields}).show();
 	},
 
-	build_carrier_section_for_dialog(label, tracking_number, carrier = null) {
+	_carrier_section_for_dialog(label, tracking_number, carrier = null) {
 		carrier = carrier || this.find_carrier_by_tracking_number(tracking_number).carrier;
 
 		let fields = [{fieldtype: 'Section Break', label: `${label} (${carrier}): ${tracking_number}`}];

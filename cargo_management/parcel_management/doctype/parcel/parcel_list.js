@@ -70,13 +70,14 @@ frappe.listview_settings['Parcel'] = {
 		show: () => true,
 		get_label: () => __('Search'),
 		get_description: () => '',
-		action: (doc) => cargo_management.build_carrier_url_dialog(doc)
+		action: (doc) => cargo_management.open_carriers_dialog(doc)
 	},
 
 	formatters: {
 		transportation: (value) => cargo_management.transportation_formatter(value),
 		name: (value, df, doc) => (value !== doc.tracking_number) ? `<b>${value}</b>` : ''
 	}
+
 };
 // 119 FIXME: Create more functions, and move them to cargo_management.js
 // 6 warning, 4 typo // TODO: 115 -> Working on frappe boot info

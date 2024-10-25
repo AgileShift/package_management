@@ -77,7 +77,8 @@ frappe.ui.form.on('Parcel', {
 
 		frm.add_custom_button(__('Previsualization'), () => frm.events.parcel_preview_dialog(frm));
 
-		carriers_settings.urls.forEach(url => frm.add_custom_button(url.title, () => window.open(url.url + frm.doc.tracking_number)));
+
+		frm.add_custom_button(__('Search'), () => cargo_management.open_carriers_dialog(frm.doc));
 	},
 
 	get_data_from_api(frm) {
