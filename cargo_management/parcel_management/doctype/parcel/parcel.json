@@ -18,6 +18,7 @@
   "column_break_2",
   "transportation",
   "status",
+  "sub_status",
   "extra_services_section",
   "column_break_mpgh",
   "column_break_uyaz",
@@ -235,6 +236,7 @@
    "fieldname": "total",
    "fieldtype": "Currency",
    "label": "Total(Amt)",
+   "non_negative": 1,
    "options": "USD",
    "read_only": 1
   },
@@ -399,6 +401,19 @@
    "fieldname": "order_date",
    "fieldtype": "Date",
    "label": "Purchase Date"
+  },
+  {
+   "bold": 1,
+   "columns": 2,
+   "fieldname": "sub_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Sub Status",
+   "no_copy": 1,
+   "options": "At Origin\nDelayed",
+   "search_index": 1
   }
  ],
  "links": [
@@ -428,7 +443,7 @@
    "link_fieldname": "package"
   }
  ],
- "modified": "2024-04-27 06:05:32.669711",
+ "modified": "2024-10-25 16:45:42.615178",
  "modified_by": "Administrator",
  "module": "Parcel Management",
  "name": "Parcel",
