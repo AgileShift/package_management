@@ -7,6 +7,7 @@ def find_package_by_tracking_number(tracking_number: str):
 	""" Tries to Find a Package Doc giving only a tracking number """
 	result = find_carrier_by_tracking_number(tracking_number)  # Returns tracking_number sanitized
 
+	# TODO: Delete consolidated_tracking_numbers
 	# ToDo: OPTIMIZE the build of query params: 1ZY853E7YW41358480
 	coincidences = frappe.get_list(
 		'Parcel',

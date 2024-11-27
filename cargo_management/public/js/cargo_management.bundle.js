@@ -26,20 +26,20 @@ cargo_management = {
 			return response; // If data is not returned, fields will be erased. Affected Views: List, Form and QuickEntry
 
 		const carrierRegex = [ // The order matters for USPS and FedEx!
-			{carrier: 'UPS', regex: /^1Z/},
-			{carrier: 'SunYou', regex: /^SY/},       // SYUS & SYAE & SYBA
+			{carrier: 'UPS', 		regex: /^1Z/},
+			{carrier: 'SunYou', 	regex: /^SY/},       // SYUS & SYAE & SYBA
 			{carrier: 'SF Express', regex: /^SF/},
-			{carrier: 'Veho', regex: /^1V/},         // FIXME: We can enforce length?
-			{carrier: 'Amazon', regex: /^TBA/},
+			{carrier: 'Veho', 		regex: /^1V/},         // FIXME: We can enforce length?
+			{carrier: 'Amazon', 	regex: /^TBA/},
 			//{carrier: 'UniUni',     regex: /^UUS0/},     // 'YunExpress' -> YT, sometimes delivers to UniUni
-			{carrier: 'Cainiao', regex: /^LP00/},          // Cainiao can sometimes track 'Yanwen' and 'SunYou'
-			{carrier: 'DHL', regex: /^.{10}$/},
+			{carrier: 'Cainiao', 	regex: /^LP00/},          // Cainiao can sometimes track 'Yanwen' and 'SunYou'
+			{carrier: 'DHL', 		regex: /^.{10}$/},
 			{carrier: 'YunExpress', regex: /^YT|^YU00/},   // These are sometimes delivered by 'USPS' and 'OnTrac'
-			{carrier: 'OnTrac', regex: /^1LS|^D100/},
-			{carrier: 'Yanwen', regex: /^ALS00|^S000|^UY/}, // ALS00 is sometimes delivered by 'USPS'. UY ends with 'CZ'
-			{carrier: 'Unknown', regex: /^92(612.{17})$|^420.{5}92(612.{17})$/},       // *92612*90980949456651012 | 42033166*926129*0980949456651012. Start with: 92612 or with zipcode(420xxxxx) can be handled by FedEx or USPS. search_term starts at 612
-			{carrier: 'USPS', regex: /^9(?:.{21}|.{25})$|^420.{5}(9(?:.{21}|.{25}))$/}, // *9*400111108296364807659 | 42033165*9*274890983426386918697. First 8 digits: 420xxxxx(zipcode)
-			{carrier: 'FedEx', regex: /^.{12}$|^612.{17}$|^.{22}([1-9].{11})$/},     // *612*90982157320543198 | 9622001900005105596800*5*49425980480. Last 12 digits is tracking
+			{carrier: 'OnTrac', 	regex: /^1LS|^D100/},
+			{carrier: 'Yanwen', 	regex: /^ALS00|^S000|^UY/}, // ALS00 is sometimes delivered by 'USPS'. UY ends with 'CZ'
+			{carrier: 'Unknown', 	regex: /^92(612.{17})$|^420.{5}92(612.{17})$/},       // *92612*90980949456651012 | 42033166*926129*0980949456651012. Start with: 92612 or with zipcode(420xxxxx) can be handled by FedEx or USPS. search_term starts at 612
+			{carrier: 'USPS', 		regex: /^9(?:.{21}|.{25})$|^420.{5}(9(?:.{21}|.{25}))$/}, // *9*400111108296364807659 | 42033165*9*274890983426386918697. First 8 digits: 420xxxxx(zipcode)
+			{carrier: 'FedEx', 		regex: /^.{12}$|^612.{17}$|^.{22}([1-9].{11})$/},     // *612*90982157320543198 | 9622001900005105596800*5*49425980480. Last 12 digits is tracking
 		]; // FIXME: Sort by the most used Carrier? | FIXME: Add More Carriers: 'LY', 'LB', 'LW' | # FIXME: Move to carriers.json
 		// AQ are china Post, LW are USPS
 		// 00310202207521313709 for Pitney Bowes
@@ -127,4 +127,4 @@ cargo_management = {
 };
 // TODO 98: Working on Frappe Boot Info!
 // TODO: 135(Bracket) WORKING on TransportationMultiSelect Single Control
-// 1 error, 5 warning, 2 warning, 8 typos
+// 127 -> 1 error, 5 warning, 2 warning, 8 typos - 29 Octubre

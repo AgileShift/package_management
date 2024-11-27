@@ -12,8 +12,32 @@
   "customer_name",
   "item_code",
   "gross_weight",
+  "default_weight",
   "billable_qty_or_weight",
+  "section_break_inag",
+  "column_break_glou",
+  "most_used_item_code_2",
+  "most_used_item_code_3",
+  "column_break_lhsi",
+  "most_used_item_code_4",
+  "most_used_item_code_5",
+  "most_used_item_code_6",
+  "column_break_iofs",
+  "most_used_item_code_7",
+  "most_used_item_code_8",
+  "column_break_ntae",
+  "most_used_item_code_9",
+  "most_used_item_code_10",
+  "column_break_dkma",
+  "most_used_item_code_11",
+  "most_used_item_code_12",
+  "column_break_yati",
+  "most_used_item_code_1",
+  "most_used_item_code_13",
+  "most_used_item_code_14",
+  "most_used_item_code_15",
   "section_break_wljv",
+  "column_break_lraq",
   "package",
   "package_2",
   "carrier_est_weight",
@@ -40,6 +64,7 @@
    "reqd": 1
   },
   {
+   "bold": 1,
    "columns": 2,
    "fetch_from": "customer.customer_name",
    "fetch_if_empty": 1,
@@ -136,7 +161,7 @@
    "description": "Quantity or Weight in Pounds.",
    "fieldname": "billable_qty_or_weight",
    "fieldtype": "Float",
-   "label": "Billable Quantity or Weight"
+   "label": "Billable Quantity"
   },
   {
    "fieldname": "warehouse_receipt",
@@ -193,11 +218,139 @@
    "fieldname": "section_break_bhmz",
    "fieldtype": "Section Break",
    "hide_border": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_1",
+   "fieldtype": "Button",
+   "label": "Varios - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "default_weight",
+   "fieldtype": "Button",
+   "label": "1 Libra"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_2",
+   "fieldtype": "Button",
+   "label": "Ropa - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_3",
+   "fieldtype": "Button",
+   "label": "Zapatos - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_4",
+   "fieldtype": "Button",
+   "label": "Cosmeticos - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_5",
+   "fieldtype": "Button",
+   "label": "Skincare - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_6",
+   "fieldtype": "Button",
+   "label": "Perfumes - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_7",
+   "fieldtype": "Button",
+   "label": "Peluches - PESO"
+  },
+  {
+   "fieldname": "section_break_inag",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_glou",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_lhsi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_iofs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ntae",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dkma",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_8",
+   "fieldtype": "Button",
+   "label": "Juguetes - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_9",
+   "fieldtype": "Button",
+   "label": "Reloj - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_10",
+   "fieldtype": "Button",
+   "label": "Electronicos - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_11",
+   "fieldtype": "Button",
+   "label": "Salud y Hogar - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_12",
+   "fieldtype": "Button",
+   "label": "Vitaminas y Suplementos - PESO"
+  },
+  {
+   "fieldname": "column_break_yati",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_13",
+   "fieldtype": "Button",
+   "label": "Repuestos - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_14",
+   "fieldtype": "Button",
+   "label": "Repuesto Auto - PESO"
+  },
+  {
+   "bold": 1,
+   "fieldname": "most_used_item_code_15",
+   "fieldtype": "Button",
+   "label": "Repuestos Moto - PESO"
+  },
+  {
+   "fieldname": "column_break_lraq",
+   "fieldtype": "Column Break"
   }
  ],
  "istable": 1,
  "links": [],
- "modified": "2024-10-01 17:00:07.079471",
+ "modified": "2024-11-27 12:07:13.154576",
  "modified_by": "Administrator",
  "module": "Shipment Management",
  "name": "Cargo Shipment Receipt Line",

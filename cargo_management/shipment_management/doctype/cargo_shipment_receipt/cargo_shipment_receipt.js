@@ -6,9 +6,6 @@ frappe.ui.form.on('Cargo Shipment Receipt', {
 		frm.page.sidebar.toggle(false); // Hide Sidebar to focus better on the doc
 	},
 
-	// TODO: disable Hide on extra section
-	// Add a button for the most used item code?
-
 	onload: function (frm) {
 		// Adding the two possible ways to trigger a fetch for customer_name : FIXME REVIEW THIS!. what happens on multiple customers same tracking?
 		frm.add_fetch('package', 'customer_name', 'customer_name');
@@ -109,8 +106,16 @@ frappe.ui.form.on('Cargo Shipment Receipt', {
 			frm.refresh_field('cargo_shipment_receipt_lines');
 		});
 
-	}
+	},
+
+	// TODO: This can be improved more dynamically -> // HELPERS -> Fix or Make more Dynamic
+	update_item_code: function (frm, cdt, cdn, item_code) {
+		locals[cdt][cdn].item_code = item_code;  // Getting Content Child Row being edited
+		refresh_field('item_code', cdn, 'cargo_shipment_receipt_lines');
+	},
 });
+
+
 
 // Child Table
 frappe.ui.form.on('Cargo Shipment Receipt Line', {
@@ -120,5 +125,28 @@ frappe.ui.form.on('Cargo Shipment Receipt Line', {
 	// TODO ADD Extra Info: Warehouse Weight, Carrier Weight, Gross Weight:
 	gross_weight: function (frm) {
 		frm.set_value('gross_weight', frm.get_sum('cargo_shipment_receipt_lines', 'gross_weight'));
-	}
+	},
+
+	// TODO: This can be improved more dynamically -> // HELPERS -> Fix or Make more Dynamic
+	default_weight: function (frm, cdt, cdn) {
+		locals[cdt][cdn].gross_weight = 1.00;  // Getting Content Child Row being edited
+		refresh_field('gross_weight', cdn, 'cargo_shipment_receipt_lines');
+	},
+
+	most_used_item_code_1: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Varios - PESO'),
+	most_used_item_code_2: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Ropa - PESO'),
+	most_used_item_code_3: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Zapatos - PESO'),
+	most_used_item_code_4: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Cosméticos - PESO'),
+	most_used_item_code_5: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Skincare - PESO'),
+	most_used_item_code_6: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Perfumes - PESO'),
+	most_used_item_code_7: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Peluches - PESO'),
+	most_used_item_code_8: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Juguetes - PESO'),
+	most_used_item_code_9: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Reloj - PESO'),
+	most_used_item_code_10: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Electronico - PESO'),
+	most_used_item_code_11: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Salud y Hogar - PESO'),
+	most_used_item_code_12: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Vitaminas y Suplementos - PESO'),
+	most_used_item_code_13: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Repuestos - PESO'),
+	most_used_item_code_14: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Repuesto Auto - PESO'),
+	most_used_item_code_15: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Repuesto de Moto - PESO')
+
 });

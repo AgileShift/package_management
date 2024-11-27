@@ -412,8 +412,7 @@
    "in_standard_filter": 1,
    "label": "Sub Status",
    "no_copy": 1,
-   "options": "At Origin\nDelayed",
-   "search_index": 1
+   "options": "At Origin\nDelayed"
   }
  ],
  "links": [
@@ -443,7 +442,7 @@
    "link_fieldname": "package"
   }
  ],
- "modified": "2024-10-25 16:45:42.615178",
+ "modified": "2024-10-25 17:04:06.904321",
  "modified_by": "Administrator",
  "module": "Parcel Management",
  "name": "Parcel",

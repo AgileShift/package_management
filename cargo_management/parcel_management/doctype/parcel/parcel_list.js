@@ -75,6 +75,7 @@ frappe.listview_settings['Parcel'] = {
 
 	formatters: {
 		transportation: (value) => cargo_management.transportation_formatter(value),
+		sub_status: (value) => value, // TODO: Complete this
 		name: (value, df, doc) => (value !== doc.tracking_number) ? `<b>${value}</b>` : ''
 	}
 

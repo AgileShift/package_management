@@ -8,7 +8,7 @@ requires-python = ">=3.10,<3.13"
 readme = "README.md"
 dynamic = ["version"]
 dependencies = [
-    "easypost~=9.4.1"
+    "easypost~=9.5.0"
 ]
 
 [project.urls]

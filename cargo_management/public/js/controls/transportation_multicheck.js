@@ -1,4 +1,4 @@
-frappe.ui.form.ControlTransportationMultiCheck = class ControlTransportationMultiCheck extends frappe.ui.form.ControlMultiCheckSingle {
+frappe.ui.form.ControlTransportationMultiCheck = class ControlTransportationMultiCheck extends frappe.ui.form.ControlMultiCheck { // FIXME ControlMultiCheckSingle
 	// Extends from ControlMultiCheckSingle to create a 'TransportationMultiCheck'
 	// TODO: Create a Control from scratch to use Radio Buttons instead of Checkboxes
 
