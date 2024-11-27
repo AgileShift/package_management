@@ -112,6 +112,7 @@ frappe.ui.form.on('Cargo Shipment Receipt', {
 	update_item_code: function (frm, cdt, cdn, item_code) {
 		locals[cdt][cdn].item_code = item_code;  // Getting Content Child Row being edited
 		refresh_field('item_code', cdn, 'cargo_shipment_receipt_lines');
+		frm.dirty();
 	},
 });
 
@@ -131,6 +132,7 @@ frappe.ui.form.on('Cargo Shipment Receipt Line', {
 	default_weight: function (frm, cdt, cdn) {
 		locals[cdt][cdn].gross_weight = 1.00;  // Getting Content Child Row being edited
 		refresh_field('gross_weight', cdn, 'cargo_shipment_receipt_lines');
+		frm.dirty();
 	},
 
 	most_used_item_code_1: (frm, cdt, cdn) => frm.events.update_item_code(frm, cdt, cdn, 'IP Varios - PESO'),
