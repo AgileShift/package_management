@@ -48,6 +48,7 @@ class ParcelState:
 			Status.IN_TRANSIT: InTransit,
 			Status.IN_CUSTOMS: InCustoms,
 			Status.SORTING: Sorting,
+			Status.TO_BILL: ToBill,
 			Status.UNPAID: Unpaid,
 			Status.FOR_DELIVERY_OR_PICKUP: ForDeliveryOrPickup,
 			Status.FINISHED: Finished,
@@ -170,6 +171,11 @@ class InCustoms(ParcelState):
 class Sorting(ParcelState):
 	def explain_state(self):
 		return ['El paquete se encuentra siendo clasificado en oficina.'], 'blue'
+
+
+class ToBill(ParcelState):
+	def explain_state(self):
+		return ['El paquete esta listo para ser Cobrado?.'], 'green'
 
 
 class Unpaid(ParcelState):
