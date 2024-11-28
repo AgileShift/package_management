@@ -62,10 +62,6 @@ class Parcel(Document):
 	def __init__(self, *args, **kwargs):
 		super().__init__(*args, **kwargs)
 
-		print('parcel.py')
-		print(self.tracking_number)
-		print(self.status)
-
 		self.state = ParcelState.create_state(self, self.status)  # Creating the State Object from Factory Method
 
 	@override
@@ -111,6 +107,8 @@ class Parcel(Document):
 			(self.status == 'Unpaid' and new_status == 'For Delivery or Pickup')):
 			self.status = new_status
 			return True
+
+		return False
 
 		frappe.throw('Cannot Change Status of Parcel: {}'.format(self.name))  # TODO: Move this to Parcel State Machine
 
