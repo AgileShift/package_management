@@ -38,8 +38,12 @@ class ParcelState:
 		raise NotImplementedError
 
 	@staticmethod
-	def create_state(status: str, parcel: 'Parcel') -> 'ParcelState':
+	def create_state(parcel: 'Parcel', status: str = Status.AWAITING_RECEIPT) -> 'ParcelState':
 		"""Factory method to create ParcelState instances based on the current status."""
+
+		if not status:
+			status = Status.AWAITING_RECEIPT
+
 		state_classes = {
 			Status.AWAITING_RECEIPT: AwaitingReceipt,
 			Status.AWAITING_CONFIRMATION: AwaitingConfirmation,
