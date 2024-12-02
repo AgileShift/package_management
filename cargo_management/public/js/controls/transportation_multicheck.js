@@ -1,4 +1,4 @@
-frappe.ui.form.ControlTransportationMultiCheck = class ControlTransportationMultiCheck extends frappe.ui.form.ControlMultiCheck { // FIXME ControlMultiCheckSingle
+frappe.ui.form.ControlTransportationMultiCheck = class ControlTransportationMultiCheck extends frappe.ui.form.ControlMultiCheckSingle { // FIXME ControlMultiCheckSingle
 	// Extends from ControlMultiCheckSingle to create a 'TransportationMultiCheck'
 	// TODO: Create a Control from scratch to use Radio Buttons instead of Checkboxes
 
@@ -12,6 +12,8 @@ frappe.ui.form.ControlTransportationMultiCheck = class ControlTransportationMult
 			label: __(t).toUpperCase() + cargo_management.icon_html(cargo_management.TRANSPORTATIONS[t].icon),
 			color: cargo_management.TRANSPORTATIONS[t].color
 		}));
+
+		console.log(this.options)
 	}
 
 	get_checkbox_element(option) {
@@ -27,6 +29,8 @@ frappe.ui.form.ControlTransportationMultiCheck = class ControlTransportationMult
 	set_input(value) {
 		this.last_value = this.value;
 		this.value = value;
+
+		console.log(value)
 
 		this.set_checked_options();  // Set Initial Value. Refer to: /form/controls/multicheck.js -> set_checked_options();
 	}
