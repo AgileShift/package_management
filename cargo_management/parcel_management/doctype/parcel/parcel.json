@@ -55,7 +55,9 @@
   "links_section",
   "cargo_shipment",
   "explained_status",
-  "easypost_id"
+  "easypost_id",
+  "column_break_fkrx",
+  "warehouse_receipt"
  ],
  "fields": [
   {
@@ -103,7 +105,7 @@
    "in_standard_filter": 1,
    "label": "Carrier",
    "no_copy": 1,
-   "options": "Drop Off\nPick Up\nUnknown\nAmazon\nUSPS\nUPS\nDHL\nFedEx\nOnTrac\nCainiao\nSF Express\nYanwen\nYunExpress\nSunYou\nPitney Bowes\nVeho",
+   "options": "Drop Off\nPick Up\nUnknown\nAmazon\nUSPS\nUPS\nDHL\nFedEx\nOnTrac\nCainiao\nSpeedX\nSF Express\nYanwen\nYunExpress\nSunYou\nPitney Bowes\nVeho",
    "reqd": 1,
    "search_index": 1
   },
@@ -413,6 +415,23 @@
    "label": "Sub Status",
    "no_copy": 1,
    "options": "At Origin\nDelayed"
+  },
+  {
+   "fieldname": "column_break_fkrx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "warehouse_receipt",
+   "fieldtype": "Link",
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Warehouse Receipt",
+   "options": "Warehouse Receipt",
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "links": [
@@ -442,7 +461,7 @@
    "link_fieldname": "package"
   }
  ],
- "modified": "2024-10-25 17:04:06.904321",
+ "modified": "2025-01-14 19:42:35.743775",
  "modified_by": "Administrator",
  "module": "Parcel Management",
  "name": "Parcel",

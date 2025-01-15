@@ -34,7 +34,7 @@
       "tracking_url": "https://www.dhl.com/en/express/tracking.shtml?AWB="
     },
     "FedEx": {
-      "api": "EasyPost",
+      "api": "17Track",
       "default_carriers": ["EVEREST"],
       "tracking_url": "https://www.fedex.com/apps/fedextrack/?trackingnumber="
     },
@@ -47,6 +47,11 @@
       "api": "17Track",
       "default_carriers": ["Parcels", "17Track", "EVEREST"],
       "tracking_url": "https://global.cainiao.com/detail.htm?mailNoList="
+    },
+   "SpeedX": {
+      "api": "17Track",
+      "default_carriers": ["Parcels", "17Track", "EVEREST"],
+      "tracking_url": "https://tracking.speedx.io/"
     },
     "SF Express": {
       "api": "17Track",

@@ -23,6 +23,7 @@ class API17Track:
 		'YunExpress': 190008,
 		'SunYou': 190072,
 		'Pitney Bowes': 100036,
+		'SpeedX': 190844,
 	}
 
 	# See List of status at: https://api.17track.net/en/doc?anchor=main-status-of-the-shipping-process&version=v2
