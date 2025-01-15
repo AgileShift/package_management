@@ -1,34 +1,9 @@
 frappe.ui.form.on('Warehouse Receipt', {
-
-	transportation_multi_check: function (frm) {
-		frm.transportation = frappe.ui.form.make_control({
-			parent: frm.fields_dict.transportation_multicheck_html.$wrapper.addClass('text-center'),
-			render_input: true,
-			df: {
-				placeholder: __('Select item group'),
-				fieldname: 'transportation_options',
-				fieldtype: 'MultiCheckSingle',
-				label: __('Transportation'),
-				reqd: true, bold: true, columns: 2,
-				options: [{label: __('SEA'), value: 'Sea'}, {label: __('AIR'), value: 'Air', description: 'Air'}],
-				on_change: (selected) => frm.doc.transportation = selected
-			}
-		});
-
-	},
+	// TODO: Delete Most of this
 
 	setup: function (frm) {
 		frm.page.sidebar.toggle(false); // Hide Sidebar
-
-		if (frm.is_new())
-			frm.events.transportation_multi_check(frm);
 	},
-
-	onload_post_render: function (frm) {},
-
-	before_save: function (frm) {},
-
-	after_save: function (frm) {},
 
 	tracking_number: function (frm) {
 		frm.doc.tracking_number = frm.doc.tracking_number.trim().toUpperCase();  // Sanitize field
@@ -67,8 +42,8 @@ frappe.ui.form.on('Warehouse Receipt', {
 
 		const selector_dialog = new frappe.ui.Dialog({
 			title: __('Coincidences found for: {0}', [frm.doc.tracking_number]),
-			static: true,          // Cannot cancel touching outside pop-up
-			no_cancel_flag: true,  // Cannot cancel with keyboard
+			static: false,          // Cannot cancel touching outside pop-up
+			no_cancel_flag: false,  // Cannot cancel with keyboard
 			size: 'extra-large',
 			fields: [{fieldtype: 'HTML', fieldname: 'table_html'}]
 		});
@@ -118,4 +93,5 @@ frappe.ui.form.on('Warehouse Receipt', {
 	},
 });
 
-frappe.ui.form.on('Warehouse Receipt Line', {}); // FIXME 134
+frappe.ui.form.on('Warehouse Receipt Line', {});
+// FIXME 134

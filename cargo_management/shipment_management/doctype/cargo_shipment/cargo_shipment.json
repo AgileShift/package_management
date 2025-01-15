@@ -163,7 +163,7 @@
  "is_calendar_and_gantt": 1,
  "links": [
   {
-   "group": "Package",
+   "group": "Parcel",
    "link_doctype": "Parcel",
    "link_fieldname": "cargo_shipment"
   },
@@ -178,7 +178,7 @@
    "link_fieldname": "custom_cargo_shipment"
   }
  ],
- "modified": "2024-10-01 17:16:11.592628",
+ "modified": "2025-01-14 19:36:40.890321",
  "modified_by": "Administrator",
  "module": "Shipment Management",
  "name": "Cargo Shipment",

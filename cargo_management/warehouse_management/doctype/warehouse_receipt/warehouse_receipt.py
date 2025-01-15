@@ -15,7 +15,7 @@ class WarehouseReceipt(Document):
 
 		carrier_est_gross_weight: DF.Float
 		departure_date: DF.Date | None
-		status: DF.Literal["Draft", "Open", "Awaiting Departure", "In Transit", "Sorting", "Finished"]
+		status: DF.Literal["Open", "Awaiting Departure", "In Transit", "Sorting", "Finished"]
 		transportation: DF.Literal["", "Sea", "Air"]
 		volumetric_weight: DF.Float
 		warehouse_est_gross_weight: DF.Float
@@ -33,6 +33,7 @@ class WarehouseReceipt(Document):
 		if not packages:
 			return
 
+		# TODO: Improve
 		frappe.db.sql("""
 		UPDATE tabParcel
 		SET warehouse_receipt = %(wr_name)s

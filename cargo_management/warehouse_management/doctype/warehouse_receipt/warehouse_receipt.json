@@ -58,7 +58,7 @@
    "in_preview": 1,
    "in_standard_filter": 1,
    "label": "Status",
-   "options": "Draft\nOpen\nAwaiting Departure\nIn Transit\nSorting\nFinished",
+   "options": "Open\nAwaiting Departure\nIn Transit\nSorting\nFinished",
    "read_only": 1,
    "reqd": 1,
    "search_index": 1
@@ -129,14 +129,12 @@
  ],
  "links": [
   {
-   "is_child_table": 1,
-   "link_doctype": "Warehouse Receipt Line",
-   "link_fieldname": "parcel",
-   "parent_doctype": "Parcel",
-   "table_fieldname": "warehouse_receipt_lines"
+   "group": "Parcel",
+   "link_doctype": "Parcel",
+   "link_fieldname": "warehouse_receipt"
   }
  ],
- "modified": "2023-10-19 00:09:34.635987",
+ "modified": "2025-01-14 19:36:36.384998",
  "modified_by": "Administrator",
  "module": "Warehouse Management",
  "name": "Warehouse Receipt",
